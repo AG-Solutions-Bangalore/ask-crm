@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import BASE_URL from '../../base/BaseUrl'
 import axios from 'axios'
 import { Input } from '@material-tailwind/react'
+import { toast } from 'react-toastify'
 
 const NewMidAssign = () => {
     const [newMID, setNewMID] = useState({
@@ -64,11 +65,11 @@ const NewMidAssign = () => {
         }).then((res) => {
             if(res.data.code == '200'){
                 
-                alert("asssign mid")
-                navigate("/home")
+                toast.success("Mid Assigned")
+                navigate("/new-register")
                 
             }else{
-                alert("error")
+                toast.error("error while assign the mid")
             }
         });
         

@@ -1,19 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Layout from '../../layout/Layout'
-import { ContextPanel } from '../../utils/ContextPanel';
-import { useNavigate } from 'react-router-dom';
-import BASE_URL from '../../base/BaseUrl';
-import axios from 'axios';
+import React, { useContext, useEffect, useState } from "react";
+import Layout from "../../layout/Layout";
+import { ContextPanel } from "../../utils/ContextPanel";
+import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../base/BaseUrl";
+import axios from "axios";
 
 import { IoEyeOutline } from "react-icons/io5";
-import { CiEdit, CiPower } from 'react-icons/ci';
-import MUIDataTable from 'mui-datatables';
-import { BsPrinter } from 'react-icons/bs';
+import { CiEdit, CiPower } from "react-icons/ci";
+import MUIDataTable from "mui-datatables";
+import { BsPrinter } from "react-icons/bs";
 
 const LifeTimeMemberList = () => {
-    const [lifeTimeData, setLifeTimeData] = useState(null);
+  const [lifeTimeData, setLifeTimeData] = useState(null);
   const [loading, setLoading] = useState(false);
   const { isPanelUp } = useContext(ContextPanel);
+  const useTypeId = localStorage.getItem("user_type_id");
 
   const navigate = useNavigate();
 
@@ -25,11 +26,14 @@ const LifeTimeMemberList = () => {
       }
       setLoading(true);
       const token = localStorage.getItem("token");
-      const response = await axios.get(`${BASE_URL}/api/fetch-web-life-time-members`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const response = await axios.get(
+        `${BASE_URL}/api/fetch-web-life-time-members`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setLifeTimeData(response.data?.life_member);
     } catch (error) {
@@ -42,6 +46,19 @@ const LifeTimeMemberList = () => {
   useEffect(() => {
     fetchLifeTimeData();
   }, []);
+
+ const handleView = (e,id)=>{
+  e.preventDefault()
+  localStorage.setItem("view",'/life-time-member')
+  navigate(`/member-view/${id}`)
+  
+}
+
+const handleEdit = (e,id)=>{
+  e.preventDefault()
+  localStorage.setItem("edit",'/life-time-member')
+  navigate(`/member-edit/${id}`)
+}
 
   const columns = [
     {
@@ -97,19 +114,29 @@ const LifeTimeMemberList = () => {
         customBodyRender: (id) => {
           return (
             <>
-        
-          
-            <div className="flex items-center space-x-2">
-              <IoEyeOutline
-              onClick={()=>navigate(`/member-view/${id}`)}
-              title="view" className="h-5 w-5 cursor-pointer" />
-              <CiEdit
-                   onClick={()=>navigate(`/member-edit/${id}`)}
-              title="Edit" className="h-5 w-5 cursor-pointer" />
-              <BsPrinter
-                   onClick={()=>navigate(`/member-print/${id}`)}
-              title="Print" className="h-5 w-5 cursor-pointer" />
-            </div>
+              <div className="flex items-center space-x-2">
+                <IoEyeOutline
+                onClick={(e) => handleView(e,id)}
+                  // onClick={() => navigate(`/member-view/${id}`)}
+                  title="view"
+                  className="h-5 w-5 cursor-pointer"
+                />
+                <CiEdit
+                onClick={(e) => handleEdit(e,id)}
+                  // onClick={() => navigate(`/member-edit/${id}`)}
+                  title="Edit"
+                  className="h-5 w-5 cursor-pointer"
+                />
+                {useTypeId == "3" ? (
+                  <BsPrinter
+                    onClick={() => navigate(`/member-print/${id}`)}
+                    title="Print"
+                    className="h-5 w-5 cursor-pointer"
+                  />
+                ) : (
+                  " "
+                )}
+              </div>
             </>
           );
         },
@@ -123,20 +150,19 @@ const LifeTimeMemberList = () => {
     viewColumns: true,
     download: false,
     print: false,
-    
   };
   return (
-   <Layout>
-     <div className="mt-5">
+    <Layout>
+      <div className="mt-5">
         <MUIDataTable
-        title='Life Time Member List'
+          title="Life Time Member List"
           data={lifeTimeData ? lifeTimeData : []}
           columns={columns}
           options={options}
         />
       </div>
-   </Layout>
-  )
-}
+    </Layout>
+  );
+};
 
-export default LifeTimeMemberList
+export default LifeTimeMemberList;

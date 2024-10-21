@@ -8,7 +8,7 @@ import ForgetPassword from "./pages/auth/ForgetPassword";
 import Profile from "./pages/profile/Profile";
 import ChangePassword from "./pages/profile/ChangePassword";
 import FamilyMemberList from "./pages/familyMember/FamilyMemberList";
-import MahilaList from "./pages/mahila/MahilaList";
+// import MahilaList from "./pages/mahila/MahilaList";
 import LifeTimeMemberList from "./pages/lifeTimeMember/LifeTimeMemberList";
 import PatronMemberList from "./pages/patronMember/PatronMemberList";
 // import PendingMidList from "./pages/pendingMid/PendingMidList";
@@ -22,6 +22,7 @@ import MemberPrint from "./pages/memberPrint/MemberPrint";
 import MemberEdit from "./pages/commonPage/MemberEdit";
 import NewMidAssign from "./pages/commonPage/NewMidAssign";
 import EditFamilyMember from "./pages/familyMember/EditFamilyMember";
+// import SamajList from "./pages/samaj/SamajList";
 const App = () => {
   return (
     <>
@@ -41,8 +42,8 @@ const App = () => {
         <Route path="/new-register" element={<NewRegisterList />} />
         <Route path="/new-mid-assign/:id" element={<NewMidAssign />} />
         <Route path="/download" element={<DownloadReport />} />
-        <Route path="/samaj" element={<Home />} />
-        <Route path="/mahila" element={<MahilaList />} />
+        {/* <Route path="/samaj" element={<SamajList />} />
+        <Route path="/mahila" element={<MahilaList />} /> */}
         <Route path="/developer" element={<Home />} />
         <Route path="/member-view/:id" element={<MemberView />} />
         <Route path="/add-family-member" element={<AddFamilyMember />} />

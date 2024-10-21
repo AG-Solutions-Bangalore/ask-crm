@@ -13,10 +13,11 @@ import {
 } from 'react-icons/fi';
 import moment from 'moment';
 import Layout from "../../layout/Layout";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { ContextPanel } from "../../utils/ContextPanel";
 import axios from "axios";
 import BASE_URL from "../../base/BaseUrl";
+import { IoReturnDownBack } from "react-icons/io5";
 
 const MemberView = () => {
   const [profile, setProfile] = useState({});
@@ -78,6 +79,13 @@ const SectionHeader = ({ icon: Icon, title }) => (
   const displayValue = (value) => {
     return value ? value : defaultValue;
   };
+
+  const handleBack = ()=>{
+    const view = localStorage.getItem("view")
+    navigate(`${view}`)
+    localStorage.removeItem("view")
+  }
+
   return (
     <Layout>
         {/* max-w-[210mm] */}
@@ -85,8 +93,11 @@ const SectionHeader = ({ icon: Icon, title }) => (
   
       <div className="flex justify-between items-start mb-2 pb-6 border-b border-gray-200">
         <div className="flex-1">
-          <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            Member Information
+          <h1 className="text-3xl flex gap-2 font-bold text-gray-800 mb-4">
+          
+                <IoReturnDownBack onClick={(e)=>handleBack(e)} className="w-8 h-8 border border-red-500 hover:border-blue-500 bg-blue-100 hover:bg-red-100 border-dashed p-1 rounded-lg text-blue-500 hover:text-red-700" />
+              
+           <span>Member Information</span>
           </h1>
           <p className="text-gray-600">
             MID: <span className="font-semibold">{displayValue(profile.user_mid)}</span>

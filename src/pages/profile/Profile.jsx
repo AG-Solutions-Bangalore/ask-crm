@@ -427,7 +427,7 @@ const Profile = () => {
       if (res.data.code == "200") {
         toast.success("Profile Update Successfully");
 
-        navigate("/home");
+        
       } else {
         toast.error("duplicate entry");
       }
@@ -1182,14 +1182,7 @@ const Profile = () => {
                 >
                   Update
                 </Button>
-                <Link to="/home">
-                  <Button
-                    type="button"
-                    className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2"
-                  >
-                    Cancel
-                  </Button>
-                </Link>
+                
               </div>
             </form>
           </CardBody>

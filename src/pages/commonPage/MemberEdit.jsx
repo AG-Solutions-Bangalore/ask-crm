@@ -41,6 +41,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { ContextPanel } from "../../utils/ContextPanel";
 import BASE_URL from "../../base/BaseUrl";
+import { IoReturnDownBack } from "react-icons/io5";
 
 const MemberEdit = () => {
   const [formData, setFormData] = useState({
@@ -337,6 +338,7 @@ const MemberEdit = () => {
       });
     }
   };
+  const edit = localStorage.getItem("edit")
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -409,15 +411,21 @@ const MemberEdit = () => {
       },
     }).then((res) => {
       if (res.data.code == "200") {
-        toast.success("Life Time Member Update Successfully");
+        toast.success("Member Update Successfully");
 
-        navigate("/home");
+        navigate(`${edit}`)
       } else {
         toast.error("duplicate entry");
       }
     });
     // Add your update logic here
   };
+
+  const handleBack = ()=>{
+   
+    navigate(`${edit}`)
+    localStorage.removeItem("edit")
+  }
   return (
     <Layout>
       <div className="mt-5">
@@ -429,8 +437,11 @@ const MemberEdit = () => {
                 
                 <div className="border-l-4 flex justify-between items-center border-blue-500 pl-4 mb-8">
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800">
-                      Personal Information
+                    <h2 className="text-2xl flex gap-2 font-bold text-gray-800">
+                    <IoReturnDownBack onClick={(e)=>handleBack(e)} className="w-8 h-8 border border-red-500 hover:border-blue-500 bg-blue-100 hover:bg-red-100 border-dashed p-1 rounded-lg text-blue-500 hover:text-red-700" />
+
+              
+                      <span>Personal Information</span>
                     </h2>
                     <p className="text-gray-600 mt-1">
                       Basic details about yourself
@@ -1174,14 +1185,15 @@ const MemberEdit = () => {
                 >
                   Update
                 </Button>
-                <Link to="/home">
+                
                   <Button
+                  onClick={(e)=>handleBack(e)}
                     type="button"
                     className="bg-gray-500 hover:bg-gray-600 text-white px-6 py-2"
                   >
                     Cancel
                   </Button>
-                </Link>
+              
               </div>
             </form>
           </CardBody>

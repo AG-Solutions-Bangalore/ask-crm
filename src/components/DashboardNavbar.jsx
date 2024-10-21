@@ -55,7 +55,7 @@ const DashboardNavbar = ({ openSideNav, setOpenSideNav }) => {
       color={fixedNavbar ? "white" : "transparent"}
       className={`rounded-xl transition-all ${
         fixedNavbar
-          ? "sticky top-4 z-40 py-3 bg-gradient-to-br from-gray-800 text-white to-gray-700  shadow-lg  shadow-blue-900"
+          ? "sticky top-4 z-40 py-3  bg-blue-300 text-white   shadow-lg  shadow-blue-900"
           : "px-0 py-1"
       }`}
       fullWidth
@@ -67,9 +67,9 @@ const DashboardNavbar = ({ openSideNav, setOpenSideNav }) => {
             
               <Link  to={'/home'}>
                 <Typography
-                  variant="standard"
-                  color="white"
-                  className="font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
+                 
+                  color="black"
+                  className="font-normal opacity-50 transition-all hover:text-red-500 hover:opacity-100"
                 >
                   Home
                 </Typography>

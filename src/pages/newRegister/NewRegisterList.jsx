@@ -40,6 +40,19 @@ const NewRegisterList = () => {
     useEffect(() => {
         fetchNewRegisterData();
     }, []);
+
+    const handleView = (e,id)=>{
+      e.preventDefault()
+      localStorage.setItem("view",'/new-register')
+      navigate(`/member-view/${id}`)
+      
+    }
+    
+    const handleEdit = (e,id)=>{
+      e.preventDefault()
+      localStorage.setItem("edit",'/new-register')
+      navigate(`/member-edit/${id}`)
+    }
   
     const columns = [
       {
@@ -111,10 +124,10 @@ const NewRegisterList = () => {
                    onClick={()=>navigate(`/new-mid-assign/${id}`)}
               title="mid" className="h-5 w-5 cursor-pointer" />
               <IoEyeOutline
-              onClick={()=>navigate(`/member-view/${id}`)}
+              onClick={(e) => handleView(e,id)}
               title="view" className="h-5 w-5 cursor-pointer" />
               <CiEdit
-                   onClick={()=>navigate(`/member-edit/${id}`)}
+                   onClick={(e) => handleEdit(e,id)}
               title="Edit" className="h-5 w-5 cursor-pointer" />
               
             </div>

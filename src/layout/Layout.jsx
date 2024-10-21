@@ -6,7 +6,7 @@ import SideNav from "../components/SideNav";
 const Layout = ({ children }) => {
   const [openSideNav, setOpenSideNav] = useState(false);
   return (
-    <div className="min-h-screen bg-green-200">
+    <div className="min-h-screen bg-green-50">
       <SideNav openSideNav={openSideNav} setOpenSideNav={setOpenSideNav} />
       <div className="p-4 xl:ml-[17rem]">
         <DashboardNavbar

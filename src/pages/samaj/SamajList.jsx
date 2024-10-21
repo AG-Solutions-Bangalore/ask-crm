@@ -1,18 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Layout from "../../layout/Layout"
-import { useNavigate } from 'react-router-dom';
-import { ContextPanel } from '../../utils/ContextPanel';
-import axios from 'axios';
+import Layout from '../../layout/Layout'
 import BASE_URL from '../../base/BaseUrl';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import MUIDataTable from 'mui-datatables';
+import { ContextPanel } from '../../utils/ContextPanel';
 import Moment from "moment";
-const MahilaList = () => {
-  const [mahilaData, setMahilaData] = useState(null);
+
+const SamajList = () => {
+    const [samajData, setSamajData] = useState(null);
   const [loading, setLoading] = useState(false);
   const { isPanelUp } = useContext(ContextPanel);
   const navigate = useNavigate();
   useEffect(() => {
-    const fetchMahilaData = async () => {
+    const fetchSamajData = async () => {
       try {
         if (!isPanelUp) {
           navigate("/maintenance");
@@ -21,7 +22,7 @@ const MahilaList = () => {
         setLoading(true);
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          `${BASE_URL}/api/fetch-web-events/mahila`,
+          `${BASE_URL}/api/fetch-web-events/samaj`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -29,14 +30,14 @@ const MahilaList = () => {
           }
         );
 
-        setMahilaData(response.data?.eventsdata);
+        setSamajData(response.data?.eventsdata);
       } catch (error) {
         console.error("Error fetching dashboard data", error);
       } finally {
         setLoading(false);
       }
     };
-    fetchMahilaData();
+    fetchSamajData();
     setLoading(false);
   }, []);
 
@@ -128,17 +129,17 @@ const MahilaList = () => {
    
   };
   return (
-   <Layout>
-     <div className="mt-5">
+    <Layout>
+        <div className="mt-5">
         <MUIDataTable
-        title="Mahila List"
-          data={mahilaData ? mahilaData : []}
+        title="Samaj List"
+          data={samajData ? samajData : []}
           columns={columns}
           options={options}
         />
       </div>
-   </Layout>
+    </Layout>
   )
 }
 
-export default MahilaList
+export default SamajList
