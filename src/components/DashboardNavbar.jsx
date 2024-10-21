@@ -63,26 +63,19 @@ const DashboardNavbar = ({ openSideNav, setOpenSideNav }) => {
     >
       <div className="flex  justify-between gap-6 flex-row md:items-center">
         <div className="capitalize">
-          <Breadcrumbs
-            className={`bg-transparent p-0 transition-all ${
-              fixedNavbar ? "mt-1" : ""
-            }`}
-          >
-            {breadcrumbs.map((breadcrumb, index) => (
-              <Link key={index} to={breadcrumb.link}>
+         
+            
+              <Link  to={'/home'}>
                 <Typography
-                  variant="small"
+                  variant="standard"
                   color="white"
                   className="font-normal opacity-50 transition-all hover:text-blue-500 hover:opacity-100"
                 >
-                  {breadcrumb.name}
+                  Home
                 </Typography>
               </Link>
-            ))}
-          </Breadcrumbs>
-          <Typography variant="h6" color="white">
-            {pageTitle}
-          </Typography>
+          
+         
         </div>
         <div className="flex items-center">
           {/* Search and other elements can be added here */}
@@ -97,29 +90,7 @@ const DashboardNavbar = ({ openSideNav, setOpenSideNav }) => {
             <Bars3Icon strokeWidth={3} className="h-6 w-6 text-white" />
           </IconButton>
           {/* profile icon  */}
-          <Menu
-            open={profileMenuOpen}
-            handler={setProfileMenuOpen}
-            placement="bottom-end"
-          >
-            <MenuHandler>
-              <IconButton variant="text" color="orange">
-                <UserCircleIcon className="h-5 w-5 text-red" />
-              </IconButton>
-            </MenuHandler>
-            <MenuList className="bg-gray-700">
-              <MenuItem>
-                <Link to="/profile" className="text-black">
-                  Profile
-                </Link>
-              </MenuItem>
-              <MenuItem>
-                <Link to="/change-password" className="text-black">
-                  Change Password
-                </Link>
-              </MenuItem>
-            </MenuList>
-          </Menu>
+          
           {/* Settings icon */}
           <IconButton variant="text" color="red" onClick={handleOpenLogout}>
             <HiArrowRightStartOnRectangle className="h-5 w-5 text-red" />
