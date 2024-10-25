@@ -44,6 +44,7 @@ const AppProvider = ({ children }) => {
           "/patron-member" ,
           // "/pending-mid" ,
           "/new-register" ,
+          "/register",
           "/new-mid-assign",
           "/download" ,
           "/family-edit",

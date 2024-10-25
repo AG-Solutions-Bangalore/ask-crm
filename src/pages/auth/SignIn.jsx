@@ -123,15 +123,15 @@ const SignIn = () => {
   return (
     <>
       <section className="flex flex-col lg:flex-row h-screen">
-        <div className="hidden lg:block lg:w-1/2 h-full">
+        <div className="hidden  lg:block lg:w-1/2 h-full">
           <Carousel autoplay loop>
             <img
-              src="/img/pattern.png"
+              src="https://agrawalsamaj.co/assets/web_assets/image/top_slider/slider3.jpg"
               alt="Slide 1"
               className="h-full w-full object-cover"
             />
             <img
-              src="/img/pattern.png"
+              src="https://agrawalsamaj.co/assets/web_assets/image/top_slider/slider2.jpg"
               alt="Slide 2"
               className="h-full w-full object-cover"
             />
@@ -189,6 +189,12 @@ const SignIn = () => {
                 >
                   {loading ? "Sending..." : "Send Otp"}
                 </Button>
+                <div className="flex justify-start gap-1 items-center mt-2">
+                <p className="text-gray-600  text-sm">Not a Member?</p> 
+                <Link to='/register'>
+                <span className="text-blue-400 text-sm font-bold">Sign Up</span>
+                </Link>
+                </div>
               </form>
             ) : (
               ""
