@@ -284,8 +284,8 @@ const SIgnUp = (props) => {
       );
 
       if (response.data.code == 200) {
-        toast.success("User Created Successfully");
-        navigate("/");
+        toast.success("Data Created Successfully");
+        
         if (formData.priceaga == "11100") {
           window.location = "https://easebuzz.in/quickpay/txtnulgirt";
         } else {
@@ -358,9 +358,8 @@ const SIgnUp = (props) => {
           <div className="form-group ">
             <Fields
               required={true}
-              types="text"
               title="State"
-              type="textField"
+              type="stateDropdown"
               autoComplete="Name"
               name="f_mstate"
               value={formData.f_mstate}
@@ -455,11 +454,11 @@ const SIgnUp = (props) => {
           <div className="form-group ">
             <Input
               required
-              label="Upload your document proof"
+              label="Profile Image"
               type="file"
               autoComplete="Name"
-              name="upload_doc_proof"
-              onChange={(e) => setSelectedFileDoc(e.target.files[0])}
+              name="agrawal_image"
+              onChange={(e) => setSelectedFile(e.target.files[0])}
             />
           </div>
         </div>
@@ -469,10 +468,9 @@ const SIgnUp = (props) => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-3">
           <div className="form-group ">
             <Input
-              required
               type="tel"
               maxLength={10}
-              label="Pan"
+              label="PAN No"
               autoComplete="Name"
               name="proof_pan"
               onChange={(e) => onInputChange(e)}
@@ -587,7 +585,6 @@ const SIgnUp = (props) => {
           </div>
           <div className="form-group ">
             <Input
-              required
               type="tel"
               label="Father's Mobile No"
               autoComplete="Name"
@@ -745,12 +742,12 @@ const SIgnUp = (props) => {
             <Input
               required
               type="tel"
-              maxLength={6}
-              label="Pincode"
+              maxLength={10}
+              label="Whats App"
               autoComplete="Name"
-              name="f_moffipin"
+              name="whats_app"
               onChange={(e) => onInputChange(e)}
-              value={formData.f_moffipin}
+              value={formData.whats_app}
             />
           </div>
           <div className="form-group ">

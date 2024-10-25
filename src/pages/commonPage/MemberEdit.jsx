@@ -195,28 +195,28 @@ const MemberEdit = () => {
   ];
 
   const blood = [
-    { label: "A+", value: "A+" },
-    { label: "A-", value: "A-" },
-    { label: "B+", value: "B+" },
-    { label: "B-", value: "B-" },
-    { label: "O+", value: "O+" },
-    { label: "O-", value: "O-" },
-    { label: "AB+", value: "AB+" },
-    { label: "AB-", value: "AB-" },
+    { label: "A +", value: "A +" },
+    { label: "A -", value: "A -" },
+    { label: "B +", value: "B +" },
+    { label: "B -", value: "B -" },
+    { label: "O +", value: "O +" },
+    { label: "O -", value: "O -" },
+    { label: "AB +", value: "AB +" },
+    { label: "AB -", value: "AB -" },
   ];
 
   const identification = [
     {
-      value: "Aadhar",
-      label: "Aadhar",
+      value: "Aadhar Card",
+      label: "Aadhar Card",
     },
     {
       value: "PassPort",
       label: "PassPort",
     },
     {
-      value: "PanCard",
-      label: "PanCard",
+      value: "Pan Card",
+      label: "Pan Card",
     },
   ];
 
@@ -696,8 +696,7 @@ const MemberEdit = () => {
                   <Input
                     type="text"
                     name="user_pan_no"
-                    required
-                    label="Pan No"
+                    label="PAN No"
                     value={formData.user_pan_no}
                     onChange={(e) => onInputChange(e)}
                   />
@@ -834,7 +833,7 @@ const MemberEdit = () => {
                       label="Father Date of Birth"
                       value={formData.father_dob}
                       onChange={(e) => onInputChange(e)}
-                      required
+                      
                     />
                   </div>
 
@@ -846,7 +845,7 @@ const MemberEdit = () => {
                       value={formData.father_mobile}
                       onChange={(e) => onInputChange(e)}
                       maxLength={10}
-                      required
+                      
                     />
                   </div>
 

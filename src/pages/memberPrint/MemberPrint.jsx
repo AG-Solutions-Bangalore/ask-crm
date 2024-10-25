@@ -267,7 +267,7 @@ const MemberPrint = () => {
                       {/* Profile Image */}
                       <div>
                         <img
-                        src={ `${BASE_URL}/app_images/members/ `+profile.agrawal_image}
+                        src={ `${BASE_URL}/app_images/members/`+profile.agrawal_image}
                           alt="Profile"
                           className="w-24 h-42 rounded-lg object-cover border-4 border-gray-200"
                         />

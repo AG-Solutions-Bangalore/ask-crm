@@ -173,28 +173,28 @@ const Profile = () => {
   ];
 
   const blood = [
-    { label: "A+", value: "A+" },
-    { label: "A-", value: "A-" },
-    { label: "B+", value: "B+" },
-    { label: "B-", value: "B-" },
-    { label: "O+", value: "O+" },
-    { label: "O-", value: "O-" },
-    { label: "AB+", value: "AB+" },
-    { label: "AB-", value: "AB-" },
+    { label: "A +", value: "A +" },
+    { label: "A -", value: "A -" },
+    { label: "B +", value: "B +" },
+    { label: "B -", value: "B -" },
+    { label: "O +", value: "O +" },
+    { label: "O -", value: "O -" },
+    { label: "AB +", value: "AB +" },
+    { label: "AB -", value: "AB -" },
   ];
 
   const identification = [
     {
-      value: "Aadhar",
-      label: "Aadhar",
+      value: "Aadhar Card",
+      label: "Aadhar Card",
     },
     {
       value: "PassPort",
       label: "PassPort",
     },
     {
-      value: "PanCard",
-      label: "PanCard",
+      value: "Pan Card",
+      label: "Pan Card",
     },
   ];
 

@@ -185,7 +185,7 @@ const EditFamilyMember = () => {
 
             <div className="flex justify-center space-x-6 mt-8">
               <Button
-                fullWidth
+                 
                 size="large"
                 type="submit"
                 variant="contained"

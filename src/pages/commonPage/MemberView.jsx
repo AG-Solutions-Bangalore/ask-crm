@@ -104,8 +104,7 @@ const SectionHeader = ({ icon: Icon, title }) => (
           </p>
         </div>
         <img
-        src={ `${BASE_URL}/app_images/members/ `+profile.agrawal_image}
-          // src="https://agrawalsamaj.co/public/app_images/documents/ABHI_proof_3391.jpg"
+        src={ `${BASE_URL}/app_images/members/`+profile.agrawal_image}
           alt="Member Photo"
           className="w-24 h-24 rounded-lg object-cover border-2 border-gray-200"
         />
