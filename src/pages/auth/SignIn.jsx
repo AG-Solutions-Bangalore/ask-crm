@@ -5,7 +5,7 @@ import {
   Typography,
   Carousel,
 } from "@material-tailwind/react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import BASE_URL from "../../base/BaseUrl";
@@ -19,9 +19,17 @@ const SignIn = () => {
   const [loading, setLoading] = useState(false);
   const { isPanelUp } = useContext(ContextPanel);
   const [showButtonotp, setshowButtonotp] = useState(false);
-
   const [showButtonsubmit, setshowButtonSubmit] = useState(true);
   const navigate = useNavigate();
+  const emailInputRef = useRef(null)
+
+
+  useEffect(()=>{
+    if(emailInputRef.current){
+      emailInputRef.current.focus()
+    }
+  },[])
+ 
 
   const validateOnlyDigits = (inputtxt) => {
     var phoneno = /^\d+$/;
@@ -178,6 +186,7 @@ const SignIn = () => {
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
+                    inputRef={emailInputRef}
                   />
                 </div>
 
@@ -225,6 +234,7 @@ const SignIn = () => {
                     labelProps={{
                       className: "before:content-none after:content-none",
                     }}
+            
                   />
                 </div>
 
