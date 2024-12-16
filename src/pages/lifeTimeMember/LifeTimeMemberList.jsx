@@ -128,11 +128,13 @@ const handleEdit = (e,id)=>{
                   className="h-5 w-5 cursor-pointer"
                 />
                 {useTypeId == "3" ? (
+                      <a href={`/member-print/${id}`} rel="noopener noreferrer">
                   <BsPrinter
-                    onClick={() => navigate(`/member-print/${id}`)}
+                
                     title="Print"
                     className="h-5 w-5 cursor-pointer"
                   />
+                  </a>
                 ) : (
                   " "
                 )}

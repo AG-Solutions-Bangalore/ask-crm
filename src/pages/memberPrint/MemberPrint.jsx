@@ -7,11 +7,14 @@ import axios from "axios";
 import Moment from "moment";
 import BASE_URL from "../../base/BaseUrl";
 import { Card, CardContent, Grid, Box, Typography } from "@mui/material";
-import { FaPrint } from "react-icons/fa";
+import { FaPrint, FaRegFilePdf } from "react-icons/fa";
 import moment from "moment";
 import header from "../../../public/img/header.png";
 import { AiOutlinePrinter } from "react-icons/ai";
 import ReactToPrint from "react-to-print";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
+import { IconButton } from "@material-tailwind/react";
 const MemberPrint = () => {
   const componentRef = useRef();
   const [profile, setProfile] = useState([]);
@@ -49,20 +52,77 @@ const MemberPrint = () => {
     fetchLifeTimeData();
   }, []);
 
+  const handleSavePDF = () => {
+    const input = componentRef.current;
+    html2canvas(input, { 
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      logging: true 
+      
+    }).then((canvas) => {
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+      const pageWidth = 210;  
+      const pageHeight = 297;  
+      const margin = 9;        
+  
+      const contentWidth = pageWidth - (2 * margin);
+      const imgData = canvas.toDataURL('image/png');
+      const imgWidth = contentWidth;
+      const imgHeight = (canvas.height * contentWidth) / canvas.width;
+      let position = 0;
+      while (position < imgHeight) {
+        if (position > 0) {
+          pdf.addPage();
+        }
+  
+        pdf.addImage(
+          imgData, 
+          'PNG', 
+          margin,     
+          -position, 
+          imgWidth, 
+          imgHeight,
+          '', 
+          'FAST'
+        );
+  
+        position += pageHeight;
+      }
+      
+      pdf.save("member.pdf");
+    }).catch((error) => {
+      console.error("Error generating PDF:", error);
+    });
+  };
   return (
     <Layout>
       <div className="mt-5">
         <div className="flex flex-col gap-2 w-full">
           <div className="w-full">
-            <div className="mb-2">
+            <div className=" flex items-center  w-full justify-between gap-4">
+              
+            <div className="mb-2 w-1/2">
               <ReactToPrint
                 trigger={() => (
-                  <a className="bg-blue-500 hover:bg-green-600 text-white px-4 py-2 rounded cursor-pointer flex items-center">
+                  <a className="bg-blue-500  hover:bg-green-600 text-white px-4 py-2 rounded cursor-pointer flex items-center">
                     <AiOutlinePrinter className="mr-2" /> Print
                   </a>
                 )}
                 content={() => componentRef.current}
+                documentTitle={`${profile.name}`}
               />
+            </div>
+            <div onClick={handleSavePDF} className="mb-2 w-1/2 bg-blue-500 hover:bg-green-600 text-white px-2    py-2  rounded cursor-pointer flex items-center gap-2 ">
+              
+                        <FaRegFilePdf className="w-5 h-5" /> <span>PDF</span>
+                     
+            </div>
+            
             </div>
             <Card sx={{ boxShadow: 3 }}>
               <CardContent>
@@ -86,7 +146,15 @@ const MemberPrint = () => {
                       PERSON INFORMATION
                     </h1>
 
-                    <div className="border-2 border-dashed rounded-lg p-1 border-green-600">
+                    <div className="relative  border-2 border-dashed rounded-lg p-1 border-green-600">
+                      {/* Profile Image */}
+                   <div className=" absolute right-2">
+                        <img
+                        src={ `${BASE_URL}/app_images/members/`+profile.agrawal_image}
+                          alt="Profile"
+                          className="w-32 h-42 rounded-lg object-cover border-4 border-gray-200"
+                        />
+                      </div>
                       {/* <div className="flex flex-col gap-1 mb-1"> */}
                       <div className="flex flex-col md:flex-row gap-1 mb-1">
                         <div className="w-full ">
@@ -247,6 +315,7 @@ const MemberPrint = () => {
                   </div>
 
                   {/* </div> */}
+                   
 
                   {/* Address Section */}
                   <div className=" p-2">
@@ -254,24 +323,17 @@ const MemberPrint = () => {
                       RESIDENCE ADDRESS
                     </h1>
                     <div className="flex justify-between gap-5 items-center">
-                      <div className="p-1  border-2 border-dashed border-green-600 rounded-lg w-[61rem]   ">
+                      <div className="p-1  border-2 border-dashed border-green-600 rounded-lg w-full   ">
                         <div className=" p-1  ">
                           <span> {profile.residential_add}</span>{" "}
                           <span>{profile.residential_landmark}</span>
-                          <div className="flex flex-col">
-                            <span>{profile.residential_city}</span>{" "}
+                          <div className="flex flex-row">
+                            <span>{profile.residential_city}</span>{" -"}
                             <span>{profile.residential_pin}</span>
                           </div>
                         </div>
                       </div>
-                      {/* Profile Image */}
-                      <div>
-                        <img
-                        src={ `${BASE_URL}/app_images/members/`+profile.agrawal_image}
-                          alt="Profile"
-                          className="w-24 h-42 rounded-lg object-cover border-4 border-gray-200"
-                        />
-                      </div>
+                     
                     </div>
                   </div>
 
@@ -438,7 +500,8 @@ const MemberPrint = () => {
                         <Typography className="flex justify-start gap-4">
                           <span className=" font-medium">MID</span>
                           <span className="font-medium">:</span>
-                          <span>{profile.user_mid}</span>
+                          {/* <span>{profile.user_mid}</span> */}
+                          <span>{" "}</span>
                         </Typography>
                       </div>
                     </div>
@@ -449,6 +512,7 @@ const MemberPrint = () => {
                           <span className=" font-medium">Ref.</span>
                           <span className="font-medium">:</span>
                           <span>{profile.amount_num}</span>
+                         
                         </div>
                       </div>
                     </div>

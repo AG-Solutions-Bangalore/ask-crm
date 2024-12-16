@@ -121,11 +121,10 @@ const NewRegisterList = () => {
           return (
             <>
               <div className="flex items-center space-x-2">
-                <CiEdit
-                  onClick={() => navigate(`/new-mid-assign/${id}`)}
-                  title="mid"
-                  className="h-5 w-5 cursor-pointer"
-                />
+                <a href={`/new-mid-assign/${id}`} rel="noopener noreferrer">
+                  <CiEdit title="mid" className="h-5 w-5 cursor-pointer" />
+                </a>
+
                 <IoEyeOutline
                   onClick={(e) => handleView(e, id)}
                   title="view"
@@ -136,15 +135,16 @@ const NewRegisterList = () => {
                   title="Edit"
                   className="h-5 w-5 cursor-pointer"
                 />
-                  {useTypeId == "3" ? (
-                                  <BsPrinter
-                                    onClick={() => navigate(`/member-print/${id}`)}
-                                    title="Print"
-                                    className="h-5 w-5 cursor-pointer"
-                                  />
-                                ) : (
-                                  " "
-                                )}
+                {useTypeId == "3" ? (
+                  <a href={`/member-print/${id}`} rel="noopener noreferrer">
+                    <BsPrinter
+                      title="Print"
+                      className="h-5 w-5 cursor-pointer"
+                    />
+                  </a>
+                ) : (
+                  " "
+                )}
               </div>
             </>
           );
