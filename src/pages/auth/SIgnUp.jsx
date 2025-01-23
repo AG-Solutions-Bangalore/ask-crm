@@ -254,6 +254,15 @@ const SIgnUp = (props) => {
       });
   };
 
+  const onPayment = (e, value) => {
+    e.preventDefault();
+    if(value == 1){
+      window.location = "https://easebuzz.in/quickpay/txtnulgirt";
+    }else{
+      window.location = "https://easebuzz.in/quickpay/cdnfsvlmyl";
+    }
+  }
+
   const onSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -312,8 +321,13 @@ const SIgnUp = (props) => {
     {/* Title */}
 
     <div className="p-6 mt-10 bg-white shadow-md rounded-lg ">
-      <div className="flex mb-6">
+      <div className="flex mb-6 justify-between">
         <img className="mr-1 w-[180px]" src={Logo} alt="Logo" />
+        <div>
+          <p>Already Registred ! Click here to make payment for <span onClick={(e)=>onPayment(e,1)} 
+          className="text-blue-600 cursor-pointer">Life Member
+            </span> or <span  className="text-blue-600 cursor-pointer" onClick={(e)=>onPayment(e,2)}>Patron Life Member</span>.</p>
+        </div>
       </div>
       <form onSubmit={onSubmit} autoComplete="off">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-3">
