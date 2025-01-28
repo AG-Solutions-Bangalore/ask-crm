@@ -114,7 +114,7 @@ const SignIn = () => {
           localStorage.setItem("user_type_id", user_type_id);
           navigate("/home");
         } else if (res.data.code == "401") {
-          toast.error("Username or password is incorrect");
+          toast.error("OTP is incorrect");
         } else if (res.data.code == "402") {
           toast.error("User is inactive");
         }
@@ -200,9 +200,12 @@ const SignIn = () => {
                 </Button>
                 <div className="flex justify-start gap-1 items-center mt-2">
                 <p className="text-gray-600  text-sm">Not a Member?</p> 
-                <Link to='/register'>
+                <Link to='/register-test'>
                 <span className="text-blue-400 text-sm font-bold">Sign Up</span>
                 </Link>
+                {/* <Link to='/register-test'>
+                <span className="text-blue-400 text-sm font-bold">Sign Up-Test</span>
+                </Link> */}
                 </div>
               </form>
             ) : (

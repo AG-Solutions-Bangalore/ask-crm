@@ -22,6 +22,7 @@ import MemberPrint from "./pages/memberPrint/MemberPrint";
 import MemberEdit from "./pages/commonPage/MemberEdit";
 import NewMidAssign from "./pages/commonPage/NewMidAssign";
 import EditFamilyMember from "./pages/familyMember/EditFamilyMember";
+import TestSignUp from "./pages/auth/TestSignUp";
 // import SamajList from "./pages/samaj/SamajList";
 const App = () => {
   return (
@@ -29,7 +30,8 @@ const App = () => {
      <ToastContainer />
       <Routes>
         <Route path="/" element={<SignIn />} />
-        <Route path="/register" element={<SIgnUp />} />
+        {/* <Route path="/register" element={<SIgnUp />} /> */}
+        <Route path="/register-test" element={<TestSignUp />} />
         <Route path="/forget-password" element={<ForgetPassword />} />
         <Route path="/home" element={<Home />}  />
         
