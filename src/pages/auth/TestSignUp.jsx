@@ -978,7 +978,7 @@ const TestSignUp = () => {
                   <button
                     disabled={isButtonDisabled}
                     onClick={(e) => handleSendOtp(e)}
-                    className="w-full py-3 px-6 text-white bg-[#AC246B] rounded-lg hover:bg-purple-700 transition-colors"
+                    className="w-full  py-3 px-6 text-white bg-[#AC246B] rounded-lg hover:bg-purple-700 transition-colors"
                   >
                     {isButtonDisabled ? "Verifying... OTP..." : "Verify OTP"}
                   </button>

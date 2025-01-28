@@ -200,7 +200,7 @@ const SignIn = () => {
                 </Button>
                 <div className="flex justify-start gap-1 items-center mt-2">
                 <p className="text-gray-600  text-sm">Not a Member?</p> 
-                <Link to='/register-test'>
+                <Link to='/register'>
                 <span className="text-blue-400 text-sm font-bold">Sign Up</span>
                 </Link>
                 {/* <Link to='/register-test'>

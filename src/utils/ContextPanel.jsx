@@ -71,7 +71,7 @@ const AppProvider = ({ children }) => {
         if (
           currentPath === "/" ||
           currentPath === "/register" ||
-          currentPath === "/register-test" ||
+          currentPath === "/register" ||
           currentPath === "/forget-password"
         ) {
           navigate(currentPath);
