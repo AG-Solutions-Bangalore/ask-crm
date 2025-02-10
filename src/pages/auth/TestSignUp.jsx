@@ -251,9 +251,11 @@ const TestSignUp = () => {
           },
         }
       );
+      
+       console.log("response",response)
 
       if (response.data.code == 200) {
-        toast.success("Data Created Successfully");
+        toast.success(response.data.msg);
 
         if (formData.priceaga == "11100") {
           window.location = "https://easebuzz.in/quickpay/txtnulgirt";
@@ -261,10 +263,8 @@ const TestSignUp = () => {
           window.location = "https://easebuzz.in/quickpay/cdnfsvlmyl";
         }
       } else {
-        if (response.data.code == 401) {
-          toast.error("Otp Doesn't Match");
-        } else if (response.data.code == 402) {
-          toast.error("Duplicate Entry");
+        if (response.data.code == 400) {
+          toast.error(response.data.msg);
         } else {
           toast.error("An unknown error occurred");
         }
