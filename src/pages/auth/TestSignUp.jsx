@@ -296,14 +296,14 @@ const TestSignUp = () => {
                 onClick={(e) => onPayment(e, 1)}
                 className="text-[#AC246B] hover:text-purple-800 font-medium"
               >
-                Life Member
+               Patron Life Member
               </button>{" "}
               or{" "}
               <button
                 onClick={(e) => onPayment(e, 2)}
                 className="text-[#AC246B] hover:text-purple-800 font-medium"
               >
-                Patron Life Member
+                 Life Member
               </button></div>
             </p>
           </div>
